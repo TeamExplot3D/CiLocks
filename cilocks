@@ -26,10 +26,12 @@ function files() {
 function banner() {
 
 echo -e "${lb}
+
+
  _ ___  _  _   _         _       ___      ___       _ ___    ___  _        _   _   _  
-/   |  /  |_) /    |\/| / \ \  /  |  |     |  |\ | |_  |  |   |  |_)  /\  | \ / \ |_) 
-\_ _|_ \_ |   \_   |  | \_/  \/  _|_ |_   _|_ | \| |  _|_ |_  |  | \ /--\ |_/ \_/ | \   
-                                                          \/_/                                              
+/   |  /  |_) /    |\/| / \ \  /  |  |     |  |\ | |_  |  |   |  |_)  /\  | \ / \ |_)  
+\_ _|_ \_ |   \_   |  | \_/  \/  _|_ |_   _|_ | \| |  _|_ |_  |  | \ /--\ |_/ \_/ | \  
+                                                          \/_/                                          
 ${n}"
 echo -e "${m}   UNIDAD DE CIBERSEGURIDAD ${n}"
 echo -e "${m}         CICPC VENZUELA${n}"
@@ -97,22 +99,24 @@ clear
   ${n}"
   read -p "senpai@tegalsec:~# " select
 if [[ $select == 1 ]]; then
-  # remove old version
-  rm -f "${path}/cilocks" >/dev/null 2>&1
-  rm -f "${path}/data/config" >/dev/null 2>&1
-  rm -f "${path}/data/os" >/dev/null 2>&1
+
+print "Sistema ya esta actualizada ! "
+# remove old version
+# rm -f "${path}/cilocks" >/dev/null 2>&1
+# rm -f "${path}/data/config" >/dev/null 2>&1
+#   rm -f "${path}/data/os" >/dev/null 2>&1
   # update new release
-  wget https://raw.githubusercontent.com/tegal1337/CiLocks/main/cilocks -O "${path}/cilocks" >/dev/null 2>&1
-  wget https://raw.githubusercontent.com/tegal1337/CiLocks/main/data/config -O "${path}/data/config" >/dev/null 2>&1
-  wget https://raw.githubusercontent.com/tegal1337/CiLocks/main/data/os -O "${path}/data/os" >/dev/null 2>&1
+#  wget https://raw.githubusercontent.com/tegal1337/CiLocks/main/cilocks -O "${path}/cilocks" >/dev/null 2>&1
+#  wget https://raw.githubusercontent.com/tegal1337/CiLocks/main/data/config -O "${path}/data/config" >/dev/null 2>&1
+#  wget https://raw.githubusercontent.com/tegal1337/CiLocks/main/data/os -O "${path}/data/os" >/dev/null 2>&1
   # give permission
-  chmod +x "${path}/cilocks" >/dev/null 2>&1
-  chmod +x "${path}/data/config" >/dev/null 2>&1
-  chmod +x "${path}/data/os" >/dev/null 2>&1
-  echo "Done!"
-  echo "Restart Cilocks..."
-  sleep 3
-  files
+#  chmod +x "${path}/cilocks" >/dev/null 2>&1
+#  chmod +x "${path}/data/config" >/dev/null 2>&1
+#  chmod +x "${path}/data/os" >/dev/null 2>&1
+#  echo "Done!"
+#  echo "Restart Cilocks..."
+#  sleep 3
+#  files 
 
 elif [[ $select == 2 ]]; then
   adb shell input keyevent 26 #Pressing the lock button
